@@ -2,9 +2,9 @@ package com.sthefany.myvirtualpc;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Build;
-import android.view.Gravity;
 import android.graphics.Color;
+import android.view.Gravity;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,21 +25,34 @@ public class MainActivity extends Activity {
         title.setGravity(Gravity.CENTER);
 
         TextView info = new TextView(this);
-        info.setText("Perfil: Android 11 (API 30)\\n\\nHost: ARMv7 / 32-bit\\nGuest planejado: ARM64 / 64-bit\\n\\nAvatar World • Minecraft • Brawl Stars");
+        info.setText("Android 11 (API 30)\nHost: ARMv7 / 32-bit\n\nRuntime experimental\nAvatar World • Minecraft • Brawl Stars");
         info.setTextColor(Color.LTGRAY);
         info.setTextSize(18);
         info.setGravity(Gravity.CENTER);
         info.setPadding(0, 24, 0, 0);
 
         TextView status = new TextView(this);
-        status.setText("Compatibilidade: " + Build.CPU_ABI + "\\nAndroid do aparelho: " + Build.VERSION.RELEASE + "\\n\\nO perfil ARM64 é experimental e só poderá executar código 64-bit se o hardware/runtime do aparelho oferecer suporte.");
+        status.setText(DeviceCapabilities.summary(this));
         status.setTextColor(Color.GRAY);
         status.setGravity(Gravity.CENTER);
-        status.setPadding(0, 24, 0, 0);
+        status.setPadding(0, 24, 0, 16);
+
+        Button profiles = new Button(this);
+        profiles.setText("Ver perfis de desempenho");
+        profiles.setOnClickListener(v -> {
+            int fps = DeviceCapabilities.recommendedFps(this);
+            status.setText("PERFIS\n\n" + profile("Avatar World", fps) + "\n\n" + profile("Minecraft", fps) + "\n\n" + profile("Brawl Stars", fps));
+        });
 
         root.addView(title);
         root.addView(info);
         root.addView(status);
+        root.addView(profiles);
         setContentView(root);
+    }
+
+    private String profile(String game, int fps) {
+        GameProfile p = GameProfile.forGame(game, fps);
+        return p.name + ": " + p.fps + " FPS • escala " + p.renderScale + "%";
     }
 }
