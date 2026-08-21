@@ -1,0 +1,21 @@
+{
+  "profile": "android-11-gaming",
+  "android_api": 30,
+  "android_version": "11",
+  "host_abi": "armeabi-v7a",
+  "host_bits": 32,
+  "guest_abi": "arm64-v8a",
+  "guest_bits": 64,
+  "guest_mode": "experimental",
+  "games": [
+    "Avatar World",
+    "Minecraft",
+    "Brawl Stars"
+  ],
+  "graphics": {
+    "adaptive_resolution": true,
+    "fps_limit": 60,
+    "prefer_gpu_acceleration": true
+  },
+  "note": "A 32-bit Android host cannot execute a true 64-bit guest merely by installing an APK. The ARM64 guest profile requires a compatible virtualization/emulation runtime and hardware support."
+}
