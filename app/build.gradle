@@ -1,0 +1,20 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.sthefany.myvirtualpc'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.sthefany.myvirtualpc'
+        minSdk 23
+        targetSdk 28
+        versionCode 1
+        versionName '0.1.0'
+        ndk { abiFilters 'armeabi-v7a' }
+    }
+
+    buildTypes {
+        release { minifyEnabled false }
+        debug { minifyEnabled false }
+    }
+}
