@@ -1,0 +1,23 @@
+{
+  "profile": "Xiaomi 11 Virtual Device",
+  "guestAndroid": "Android 11",
+  "guestApi": 30,
+  "guestArchitecture": "arm64-v8a",
+  "hostArchitecture": "armeabi-v7a",
+  "display": {
+    "width": 1080,
+    "height": 2400,
+    "density": 395,
+    "refreshRate": 60
+  },
+  "graphics": {
+    "mode": "software-emulation-first",
+    "hardwareAcceleration": "when-supported"
+  },
+  "games": [
+    "Avatar World",
+    "Minecraft",
+    "Brawl Stars"
+  ],
+  "note": "This profile describes a Xiaomi 11-like guest device. A real 64-bit ARM guest cannot be executed by a normal 32-bit Android APK unless the underlying hardware and runtime provide the required virtualization support. Otherwise ARM64 must be emulated in software, which can be significantly slower."
+}
